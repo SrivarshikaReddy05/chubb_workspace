@@ -1,13 +1,33 @@
 /.metadata/
 # Ignore compiled output folders
-bin/
-**/bin/
+# bin/
+# **/bin/
 
+# .classpath
+# .project
+# .settings/
+
+# **/.classpath
+
+# **/.project/
+# **/.settings/
+
+# Ignore Eclipse-related files
 .classpath
 .project
 .settings/
 
-**/.classpath
+# Ignore build/output directories
+bin/
+build/
+out/
 
-**/.project/
-**/.settings/
+# Ignore IDE configs
+.vscode/
+.idea/
+*.iml
+
+# OS and logs
+.DS_Store
+Thumbs.db
+*.log
