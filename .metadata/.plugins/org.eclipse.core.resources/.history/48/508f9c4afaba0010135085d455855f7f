@@ -1,0 +1,14 @@
+package com.app.dto;
+
+public class Example {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String msg = """
+				bxdak
+				snlcna
+				""";
+		System.out.println(msg);
+	}
+
+}

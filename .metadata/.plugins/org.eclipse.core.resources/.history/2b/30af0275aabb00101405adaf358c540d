@@ -1,0 +1,5 @@
+package com.app.process;
+
+public record Beneficiary(String name, String accNo, String bankName) { 
+	
+}

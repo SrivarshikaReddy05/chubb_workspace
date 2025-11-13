@@ -1,0 +1,64 @@
+package com.app.dto;
+
+import java.util.function.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import java.util.*;
+
+public class FunctionalInterfaces {
+	public static void main(String[] args) {
+		List<String> nameList = new ArrayList<>();
+
+		nameList.add("Ram");
+		nameList.add("James");
+		Predicate<String> prt = p -> p.startsWith("J");
+		Consumer<String> con = name -> System.out.println("names " + name);
+		Function<String, String> funobj = name -> name.substring(1, 4);
+
+		nameList.stream().map(funobj).count();
+		nameList.stream().filter(p -> p.startsWith("J")).forEach(name -> System.out.println(name));
+		nameList.stream().filter(prt).forEach(con);
+
+		Account acct1 = new Account("Ajay", "738993278", 73245645.0);
+        Account acct2 = new Account("Arjun", "837492839", 50000.0);
+        Account acct3 = new Account("Ravi", "122334455", 250000.0);
+
+        List<Account> acctList = Arrays.asList(acct1, acct2, acct3);
+
+        var sortedByAccNo = acctList.stream()
+                .sorted(Comparator.comparing(Account::accNo))
+                .toList();
+
+        sortedByAccNo.forEach(a ->
+                System.out.println("Sorted by accountNo → " + a.accNo()));
+
+        System.out.println("--------------------------------------------------");
+
+        acctList.stream()
+                .sorted(Comparator.comparingDouble(Account::bal))
+                .forEach(a ->
+                        System.out.println("Sorted by balance → " + a.bal()));
+
+        System.out.println("--------------------------------------------------");
+
+        var highBalance = acctList.stream()
+                .filter(a -> a.bal() > 50000)
+                .toList();
+
+        highBalance.forEach(a ->
+                System.out.println("Filtered (balance > 20000): " + a.name()));
+
+        System.out.println("--------------------------------------------------");
+
+        Stream<Integer> strmInt = Stream.of(1, 2, 3, 4123, 67, 34, 120);
+        strmInt.sorted().forEach(a -> System.out.println("Sorted values: " + a));
+
+        System.out.println("--------------------------------------------------");
+
+        Map<Account, String> accMap = acctList.stream()
+                .collect(Collectors.toMap(a -> a, Account::accNo));
+
+        accMap.forEach((key, value) ->
+                System.out.println("Key: " + key.name() + " | Value (AccNo): " + value));
+	}
+}

@@ -1,0 +1,46 @@
+package com.app.dto;
+
+public class PaymentOps {
+
+    public static void main(String[] args) {
+        Account acc1 = new Account("738993278", 73245645.0);
+        Account acc2 = new Account("928374650", 25000.0);
+
+        System.out.println("Before transfer:");
+        System.out.println("Account 1: " + acc1.accNo() + " Balance: " + acc1.bal());
+        System.out.println("Account 2: " + acc2.accNo() + " Balance: " + acc2.bal());
+
+        PaymentOps ops = new PaymentOps();
+        boolean status = ops.fundTransfer(acc1, acc2, 5000.0);
+
+        if (status) {
+            System.out.println("\n✅ Fund transfer successful!");
+        } else {
+            System.out.println("\n❌ Fund transfer failed!");
+        }
+    }
+
+    public boolean fundTransfer(Account acc1, Account acc2, double amount) {
+        if (amount <= 0) {
+            System.out.println("❌ Invalid transfer amount!");
+            return false;
+        }
+
+        if (acc1.bal() < amount) {
+            System.out.println("❌ Insufficient balance in sender's account!");
+            return false;
+        }
+
+        // Since Account is immutable, create new Account objects
+        Account updatedSender = new Account(acc1.accNo(), acc1.bal() - amount);
+        Account updatedReceiver = new Account(acc2.accNo(), acc2.bal() + amount);
+
+        System.out.println("\nTransfer Details:");
+        System.out.println("Amount Transferred: " + amount);
+        System.out.println("Updated Sender Balance: " + updatedSender.bal());
+        System.out.println("Updated Receiver Balance: " + updatedReceiver.bal());
+
+        return true;
+    }
+}
+

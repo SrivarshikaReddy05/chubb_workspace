@@ -1,0 +1,29 @@
+package com.app.process;
+
+public class Account {
+	String accNo ,name ; 
+	Double balance;
+	public Account(String accNo , String name , Double balance) {
+		// TODO Auto-generated constructor stub
+		this.accNo =accNo;
+		this.name = name;
+		this.balance = balance;
+		}
+	public String getAccountNumber() { return accNo; }
+    public String getHolderName() { return name; }
+    public double getBalance() { return balance; }
+
+    public void deposit(double amount) {
+        balance += amount;
+    }
+
+    public void withdraw(double amount) {
+        balance -= amount;
+    }
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

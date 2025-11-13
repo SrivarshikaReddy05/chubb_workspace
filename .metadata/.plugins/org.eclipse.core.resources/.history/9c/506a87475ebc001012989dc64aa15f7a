@@ -1,0 +1,21 @@
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+
+public class MathCalTest {
+	@Test
+	public void testAdd() {
+		int i = 10;
+		int j = 20;
+		assertEquals(j,40);
+		System.out.println("Test is successful");
+	}
+	@Test
+	public void testMul() {
+		String name = "";
+		assertNotNull(name);
+		System
+	}
+
+}

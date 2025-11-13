@@ -1,0 +1,6 @@
+package com.app.dto;
+
+public record Account(String accNo, Double bal) {
+
+
+}

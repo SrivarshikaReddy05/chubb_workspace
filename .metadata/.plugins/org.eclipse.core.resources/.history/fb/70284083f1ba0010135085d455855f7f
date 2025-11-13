@@ -1,0 +1,31 @@
+package com.app.dto;
+
+import java.util.function.*;
+import java.util.stream.Collectors;
+import java.util.*;
+
+public class FunctionalInterfaces {
+	public static void main(String[] args) {
+		List<String> nameList = new ArrayList<>();
+
+		nameList.add("Ram");
+		nameList.add("James");
+		Predicate<String> prt = p -> p.startsWith("J");
+		Consumer<String> con = name -> System.out.println("names " + name);
+		Function<String, String> funobj = name -> name.substring(1, 4);
+
+		nameList.stream().map(funobj).count();
+		nameList.stream().filter(p -> p.startsWith("J")).forEach(name -> System.out.println(name));
+		nameList.stream().filter(prt).forEach(con);
+
+		Account acc1 = new Account("Ajay", "738993278", 73245645.0);
+		Account acc2 = new Account("Arjun", "837492839", 50000.0);
+
+		List<Account> accounts = List.of(acc1, acc2);
+
+		List<String> mappedList = accounts.stream().map(acc -> acc.name() + ":" + acc.accNo())
+				.collect(Collectors.toList());
+
+		mappedList.forEach(System.out::println);
+	}
+}

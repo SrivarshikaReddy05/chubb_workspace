@@ -1,0 +1,49 @@
+import org.junit.jupiter.api.Test;
+import com.app.process.Account;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class FundTransferTest {
+
+    
+    @Test
+    public void testSuccessfulTransfer() {
+        Account from = new Account("A101", "Alice", 1000.0);
+        Account to = new Account("B202", "Bob", 500.0);
+
+        boolean result = from.transfer(from, to, 200);
+
+        assertTrue(result);
+        assertEquals(800, from.getBalance());
+        assertEquals(700, to.getBalance());
+    }
+
+
+    @Test
+    public void testInsufficientFunds() {
+        Account from = new Account("A101", "Alice", 100.0);
+        Account to = new Account("B202", "Bob", 500.0);
+
+        boolean result = from.transfer(from, to, 200);
+
+        assertTrue(result); 
+    }
+
+
+    @Test
+    public void testInvalidAmount() {
+        Account from = new Account("A101", "Alice", 1000.0);
+        Account to = new Account("B202", "Bob", 500.0);
+
+        boolean result = from.transfer(from, to, -50);
+        assertFalse(result);
+    }
+
+   
+    @Test
+    public void testNullAccounts() {
+        Account from = new Account("A101", "Alice", 1000.0);
+
+        boolean result = from.transfer(null, null, 100);
+        assertTrue(result); // ❌ will fail because actual is false
+    }
+}

@@ -1,0 +1,16 @@
+package com.app.process;
+
+public class FundTransfer {
+
+	public FundTransfer() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Account sender = new Account("123" , "Ram" , 100000.0);
+		Account receiver = new Account("456" , "Rohit" , 100000.0);
+
+	}
+
+}

@@ -1,0 +1,9 @@
+package com.app.process;
+
+public class FundTransferService {
+
+	public FundTransferService() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

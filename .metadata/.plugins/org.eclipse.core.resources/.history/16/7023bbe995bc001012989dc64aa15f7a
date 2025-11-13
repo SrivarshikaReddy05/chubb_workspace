@@ -1,0 +1,32 @@
+package com.app.process;
+
+public class FundTransferService {
+    private AccountService accountService;
+
+    public FundTransferService(AccountService accountService) {
+        this.accountService = accountService;
+    }
+
+    public String transfer(String fromAcc, String toAcc, double amount) {
+        if (amount <= 0) {
+            return "FAILURE: Invalid amount";
+        }
+        if (fromAcc.equals(toAcc)) {
+            return "FAILURE: Source and destination cannot be same";
+        }
+        double balance = accountService.getBalance(fromAcc);
+        if (balance < amount) {
+            return "FAILURE: Insufficient funds";
+        }
+        if (!accountService.exists(toAcc)) {
+            return "FAILURE: Destination account not found";
+        }
+        boolean debited = accountService.debit(fromAcc, amount);
+        boolean credited = accountService.credit(toAcc, amount);
+        if (debited && credited) {
+            return "SUCCESS: Transfer completed";
+        } else {
+            return "FAILURE: Transaction error";
+        }
+    }
+}

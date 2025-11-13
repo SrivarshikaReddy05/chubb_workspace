@@ -1,0 +1,16 @@
+package com.app.stream;
+import java.util.*;
+import java.util.stream.*;
+
+public class Learning {
+    public static void main(String[] args) {
+        List<Integer> numbers = Arrays.asList(5, 10, 15, 20, 25);
+
+        long count = numbers.stream()                 
+                            .filter(n -> n > 10)      
+                            .map(n -> n * 2)        
+                            .count();                 
+
+        System.out.println("Count = " + count);
+    }
+}

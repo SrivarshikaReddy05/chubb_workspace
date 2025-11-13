@@ -1,0 +1,49 @@
+package com.app.dto;
+
+public class PaymentOps {
+
+    public static void main(String[] args) {
+    	
+    	//var keyword
+    	var name = "Ram";
+    	System.out.println("Using var keyword name is "+name);
+    	
+        Account sender = new Account("738993278", 73245645.0);
+        Account receiver = new Account("837492839", 50000.0);
+        
+        
+        //
+        int ans = sender.add(2, 3);
+        System.out.println("From record add method : "+ans);
+        
+        
+        Beneficiary beneficiary = new Beneficiary("Ravi", "837492839", "SBI Bank");
+
+        System.out.println("Before Transfer:");
+        System.out.println("Sender Account: " + sender.accNo() + " Balance: " + sender.bal());
+        System.out.println("Receiver Account: " + receiver.accNo() + " Balance: " + receiver.bal());
+
+        fundTransfer(sender, receiver, 10000.0, beneficiary);
+
+        System.out.println("\nAfter Transfer:");
+        System.out.println("Sender Account: " + sender.accNo() + " Balance: " + sender.bal());
+        System.out.println("Receiver Account: " + receiver.accNo() + " Balance: " + receiver.bal());
+    }
+
+    public static void fundTransfer(Account fromAcc, Account toAcc, double amount, Beneficiary beneficiary) {
+        if (fromAcc.bal() < amount) {
+            System.out.println("Insufficient balance for transfer.");
+            return;
+        }
+
+        double newFromBal = fromAcc.bal() - amount;
+        double newToBal = toAcc.bal() + amount;
+
+        System.out.println("\nTransferring ₹" + amount + " to " + beneficiary.name() + " (" + beneficiary.bankName() + ")");
+        System.out.println("Transfer Successful!");
+
+        // Note: Records are immutable, so we just display new balances
+        System.out.println("Updated Sender Balance: " + newFromBal);
+        System.out.println("Updated Receiver Balance: " + newToBal);
+    }
+}

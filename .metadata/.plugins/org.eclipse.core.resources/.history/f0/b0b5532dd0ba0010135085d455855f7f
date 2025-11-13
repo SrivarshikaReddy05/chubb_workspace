@@ -1,0 +1,9 @@
+package com.app.dto;
+
+public record Account() {
+
+	public Account(String string, int i) {
+		// TODO Auto-generated constructor stub
+	}
+
+}

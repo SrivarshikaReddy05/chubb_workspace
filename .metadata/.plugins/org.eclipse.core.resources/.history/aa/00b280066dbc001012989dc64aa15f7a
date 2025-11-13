@@ -1,0 +1,18 @@
+package com.app.process;
+
+public class Account {
+	String accNo ,name ; 
+	Double balance;
+	public Account(String accNo , String name , Double balance) {
+		// TODO Auto-generated constructor stub
+		this.accNo =accNo;
+		this.name = name;
+		this.balance = balance;
+		}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

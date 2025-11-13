@@ -1,0 +1,8 @@
+
+public class SmartCalculatorTest {
+
+	public SmartCalculatorTest() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

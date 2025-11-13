@@ -1,0 +1,14 @@
+package com.app.dto;
+
+public class PaymentOps {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Account acc = new Account("738993278",74832345.0);
+		
+		System.out.println("Account Numb :" +acc.accNo() + " balance :"+acc.bal());
+	}
+	
+	
+
+}
