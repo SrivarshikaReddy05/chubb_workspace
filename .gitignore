@@ -1,0 +1,4 @@
+/.metadata/
+# Ignore compiled output folders
+bin/
+**/bin/
